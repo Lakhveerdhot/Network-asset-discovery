@@ -1,0 +1,16 @@
+Keyword,DeviceType
+GoAhead,Router
+Boa,Router
+lighttpd,Router
+BusyBox,Embedded Device
+OpenWrt,Router
+MiniServ,NAS
+JetDirect,Printer
+Apache,Web Server
+nginx,Web Server
+Microsoft-IIS,Windows Server
+Tomcat,Application Server
+Synology,NAS
+QNAP,NAS
+Hikvision,CCTV Camera
+Dahua,CCTV Camera

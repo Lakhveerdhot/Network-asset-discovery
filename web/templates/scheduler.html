@@ -1,0 +1,197 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-lg-12">
+
+            <div class="card dashboard-card">
+
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <h2>
+
+                            Scheduler
+
+                        </h2>
+
+                        <button
+                            class="btn btn-primary"
+                            disabled
+                        >
+
+                            ▶ Run Scan
+
+                        </button>
+
+                    </div>
+
+                    <hr>
+
+                    <div class="row">
+
+                        <div class="col-md-3">
+
+                            <div class="card shadow-sm">
+
+                                <div class="card-body text-center">
+
+                                    <h6>
+
+                                        Status
+
+                                    </h6>
+
+                                    {% if scheduler_enabled %}
+
+                                    <h4 class="text-success">
+
+                                    🟢 Running
+
+                                    </h4>
+
+                                    {% else %}
+
+                                    <h4 class="text-danger">
+
+                                    🔴 Paused
+
+                                    </h4>
+
+                                    {% endif %}
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <div class="card shadow-sm">
+
+                                <div class="card-body text-center">
+
+                                    <h6>
+
+                                        Last Scan
+
+                                    </h6>
+
+                                    <p>
+
+                                        {{ last_scan }}
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <div class="card shadow-sm">
+
+                                <div class="card-body text-center">
+
+                                    <h6>
+
+                                        Next Scan
+
+                                    </h6>
+
+                                    <p>
+
+                                        {{ next_scan }}
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <div class="card shadow-sm">
+
+                                <div class="card-body text-center">
+
+                                    <h6>
+
+                                        Interval
+
+                                    </h6>
+
+                                    <h4>
+
+                                        {{ scan_interval }} min
+
+                                    </h4>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <hr class="my-4">
+
+                    <div class="d-flex gap-2">
+
+                        {% if scheduler_enabled %}
+
+                        <a
+                            href="/scheduler/disable"
+                            class="btn btn-danger"
+                        >
+
+                            ⏸ Disable Scheduler
+
+                        </a>
+
+                        {% else %}
+
+                        <a
+                            href="/scheduler/enable"
+                            class="btn btn-success"
+                        >
+
+                            ▶ Enable Scheduler
+
+                        </a>
+
+                        {% endif %}
+
+                        <button
+                            class="btn btn-secondary"
+                            onclick="location.reload();"
+                        >
+
+                            🔄 Refresh
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

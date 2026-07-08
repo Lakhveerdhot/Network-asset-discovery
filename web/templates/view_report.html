@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="card dashboard-card">
+
+<div class="card-body">
+
+<h3>
+
+{{ filename }}
+
+</h3>
+
+<hr>
+
+<pre>
+
+{{ content }}
+
+</pre>
+
+<a
+
+href="/reports"
+
+class="btn btn-secondary"
+
+>
+
+Back
+
+</a>
+
+</div>
+
+</div>
+
+{% endblock %}

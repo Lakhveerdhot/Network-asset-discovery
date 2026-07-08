@@ -1,0 +1,642 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<!-- ========================= -->
+<!-- Dashboard Cards -->
+<!-- ========================= -->
+
+<div class="row mb-4">
+
+    <div class="col-lg-3 col-md-6 mb-3">
+
+        <div class="card dashboard-card">
+
+            <div class="card-body">
+
+                <h6>
+
+                Total Assets
+
+                </h6>
+
+                <p class="text-muted mb-0">
+
+                Discovered Devices
+
+                </p>
+
+                <h2>{{ total_devices }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-3 col-md-6 mb-3">
+
+        <div class="card dashboard-card">
+
+            <div class="card-body">
+
+                <h6>
+
+                Trusted
+
+                </h6>
+
+                <p class="text-muted mb-0">
+
+                Verified Devices
+
+                </p>
+
+                <h2>{{ trusted_devices }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-3 col-md-6 mb-3">
+
+        <div class="card dashboard-card">
+
+            <div class="card-body">
+
+                <h6>
+
+                Unknown
+
+                </h6>
+
+                <p class="text-muted mb-0">
+
+                Pending Review
+
+                </p>
+
+                <h2>{{ unknown_devices }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-3 col-md-6 mb-3">
+
+        <div class="card dashboard-card">
+
+            <div class="card-body">
+
+                <h6>
+
+                Untrusted
+
+                </h6>
+
+                <p class="text-muted mb-0">
+
+                Blocked Devices
+
+                </p>
+
+                <h2>{{ untrusted_devices }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- Search -->
+<!-- ========================= -->
+
+<div class="table-container mb-4">
+
+<form method="GET">
+
+<div class="row">
+
+<div class="col-md-3">
+
+<input
+
+type="text"
+
+id="searchInput"
+
+class="form-control"
+
+placeholder="Search IP, MAC, Hostname, Vendor..."
+
+>
+
+</div>
+
+<div class="col-md-2">
+
+<select
+
+name="device"
+
+class="form-select"
+
+>
+
+<option value="">All Devices</option>
+
+{% for item in device_types %}
+
+<option
+
+value="{{ item }}"
+
+{% if selected_device==item %}selected{% endif %}
+
+>
+
+{{ item }}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+</div>
+
+<div class="col-md-2">
+
+<select
+
+name="trust"
+
+class="form-select"
+
+>
+
+<option value="">All Trust</option>
+
+<option value="Trusted">Trusted</option>
+
+<option value="Unknown">Unknown</option>
+
+<option value="Untrusted">Untrusted</option>
+
+</select>
+
+</div>
+
+<div class="col-md-2">
+
+<select
+
+name="vendor"
+
+class="form-select"
+
+>
+
+<option value="">All Vendors</option>
+
+{% for item in vendors %}
+
+<option
+
+value="{{ item }}"
+
+{% if selected_vendor==item %}selected{% endif %}
+
+>
+
+{{ item }}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+</div>
+
+<div class="col-md-2">
+
+<select
+
+name="os"
+
+class="form-select"
+
+>
+
+<option value="">All OS</option>
+
+{% for item in operating_systems %}
+
+<option
+
+value="{{ item }}"
+
+{% if selected_os==item %}selected{% endif %}
+
+>
+
+{{ item }}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+</div>
+
+<div class="col-md-1">
+
+<button
+
+class="btn btn-primary w-100"
+
+>
+
+Go
+
+</button>
+
+</div>
+
+</div>
+
+</form>
+
+</div>
+
+<!-- ========================= -->
+<!-- Device Table -->
+<!-- ========================= -->
+
+<div class="table-container">
+
+<table
+
+class="table table-hover align-middle"
+
+id="deviceTable"
+
+data-filter="true"
+
+>
+
+<thead>
+
+<tr>
+
+<th>IP Address</th>
+
+<th>Hostname</th>
+
+<th>Vendor</th>
+
+<th>Device</th>
+
+<th>Operating System</th>
+
+<th>Trust</th>
+
+<th width="260">
+
+Actions
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for device in devices %}
+
+<tr
+style="cursor:pointer"
+onclick="location.href='/device/{{ device.mac }}'"
+>
+
+<td>
+
+<i class="bi bi-hdd-network me-2 text-primary"></i>
+
+{{ device.ip }}
+
+</td>
+
+<td>
+
+{{ device.hostname }}
+
+</td>
+
+<td>
+
+{{ device.vendor }}
+
+</td>
+
+<td>
+
+{% if device.device_type=="Laptop" %}
+
+<span class="badge bg-primary">
+
+💻 Laptop
+
+</span>
+
+{% elif device.device_type=="Router" %}
+
+<span class="badge bg-success">
+
+📡 Router
+
+</span>
+
+{% elif device.device_type=="Mobile Phone" %}
+
+<span class="badge bg-warning text-dark">
+
+📱 Mobile
+
+</span>
+
+{% elif device.device_type=="Printer" %}
+
+<span class="badge bg-secondary">
+
+🖨 Printer
+
+</span>
+
+{% elif device.device_type=="Server" %}
+
+<span class="badge bg-danger">
+
+🖥 Server
+
+</span>
+
+{% else %}
+
+<span class="badge bg-dark">
+
+❓ Unknown
+
+</span>
+
+{% endif %}
+
+</td>
+
+<td>
+
+{{ device.operating_system }}
+
+</td>
+
+<td>
+
+{% if device.trust_status=="Trusted" %}
+
+<span class="badge bg-success">
+
+✔ Trusted
+
+</span>
+
+{% elif device.trust_status=="Untrusted" %}
+
+<span class="badge bg-danger">
+
+✖ Untrusted
+
+</span>
+
+{% else %}
+
+<span class="badge bg-warning text-dark">
+
+? Unknown
+
+</span>
+
+{% endif %}
+
+</td>
+
+<td>
+
+<a
+
+href="/device/{{ device.mac }}"
+
+class="btn btn-sm btn-primary"
+
+>
+
+View
+
+</a>
+
+{% if device.trust_status=="Trusted" %}
+
+<a
+
+href="/device/{{ device.mac }}/untrust"
+
+class="btn btn-sm btn-warning"
+
+>
+
+Untrust
+
+</a>
+
+{% else %}
+
+<a
+
+href="/device/{{ device.mac }}/trust"
+
+class="btn btn-sm btn-success"
+
+>
+
+Trust
+
+</a>
+
+{% endif %}
+
+<a
+
+href="/device/{{ device.mac }}/delete"
+
+class="btn btn-sm btn-danger"
+
+onclick="return confirm('Delete this device?')"
+
+>
+
+Delete
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- Recent Scan History -->
+<!-- ===================================================== -->
+
+<div class="table-container mt-5">
+
+    <div class="d-flex justify-content-between mb-3">
+
+    <h4>
+
+    Recent Scan History
+
+    </h4>
+
+    <span class="badge bg-primary">
+
+    {{ recent_scans|length }}
+
+    Scans
+
+    </span>
+
+    </div>
+
+    {% if recent_scans %}
+
+    <table class="table table-hover align-middle">
+
+        <thead>
+
+            <tr>
+
+                <th>Scan Time</th>
+
+                <th>Total Hosts</th>
+
+                <th>Open Ports</th>
+
+                <th>Duration</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for scan in recent_scans %}
+
+            <tr>
+
+                <td>
+
+                    {{ scan.scan_time }}
+
+                </td>
+
+                <td>
+
+                    {{ scan.total_hosts }}
+
+                </td>
+
+                <td>
+
+                    {{ scan.open_ports }}
+
+                </td>
+
+                <td>
+
+                    {{ "%.2f"|format(scan.duration) }} sec
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+    {% else %}
+
+    <div class="alert alert-secondary">
+
+        No Scan History Available.
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+<!-- ========================= -->
+<!-- Search Script -->
+<!-- ========================= -->
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+const tableRows = document.querySelectorAll("#deviceTable tbody tr");
+
+searchInput.addEventListener("keyup", function () {
+
+    const value = this.value.toLowerCase();
+
+    tableRows.forEach(row => {
+
+        const text = row.innerText.toLowerCase();
+
+        if (text.includes(value)) {
+
+            row.style.display = "";
+
+        }
+
+        else {
+
+            row.style.display = "none";
+
+        }
+
+    });
+
+});
+
+</script>
+
+{% endblock %}

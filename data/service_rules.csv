@@ -1,0 +1,18 @@
+Keyword,DeviceType
+SMB,Windows Device
+NETBIOS,Windows Device
+MSRPC,Windows Device
+AFP,Apple Device
+IPP,Printer
+LPD,Printer
+JetDirect,Printer
+RTSP,CCTV Camera
+MQTT,IoT Device
+CoAP,IoT Device
+SSH,Linux Device
+RDP,Windows Device
+NFS,Server
+FTP,Server
+DNS,Network Device
+DHCP,Network Device
+SNMP,Network Device

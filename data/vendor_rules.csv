@@ -1,0 +1,43 @@
+Keyword,DeviceType
+Cisco,Router
+Juniper,Router
+MikroTik,Router
+Ubiquiti,Router
+TP-Link,Router
+D-Link,Router
+Netgear,Router
+ASUSTek,Router
+Fortinet,Firewall
+Palo Alto Networks,Firewall
+Sophos,Firewall
+Checkpoint,Firewall
+Hikvision,CCTV Camera
+Dahua,CCTV Camera
+Axis,CCTV Camera
+Canon,Printer
+Brother,Printer
+Epson,Printer
+HP,Printer
+Kyocera,Printer
+Ricoh,Printer
+Xerox,Printer
+Synology,NAS
+QNAP,NAS
+Western Digital,NAS
+Seagate,NAS
+Dell,Server
+HPE,Server
+Lenovo,Server
+Supermicro,Server
+Raspberry Pi Foundation,IoT Device
+Espressif,IoT Device
+Google,Smart Device
+Amazon,Smart Device
+Apple,Mobile Phone
+Samsung,Mobile Phone
+Xiaomi,Mobile Phone
+OnePlus,Mobile Phone
+Realme,Mobile Phone
+OPPO,Mobile Phone
+Vivo,Mobile Phone
+Motorola,Mobile Phone

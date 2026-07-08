@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="card dashboard-card">
+
+<div class="card-body">
+
+<h2>
+
+Generated Reports
+
+</h2>
+
+<hr>
+
+<table class="table table-hover">
+
+<thead>
+
+<tr>
+
+<th>Report Name</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for report in reports %}
+
+<tr>
+
+<td>
+
+{{ report.name }}
+
+</td>
+
+<td>
+
+<a
+
+href="/reports/view/{{ report.name }}"
+
+class="btn btn-sm btn-primary"
+
+>
+
+View
+
+</a>
+
+<a
+
+href="/reports/download/{{ report.name }}"
+
+class="btn btn-sm btn-success"
+
+>
+
+Download
+
+</a>
+
+<a
+
+href="/reports/delete/{{ report.name }}"
+
+class="btn btn-sm btn-danger"
+
+onclick="return confirm('Delete this report?')"
+
+>
+
+Delete
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

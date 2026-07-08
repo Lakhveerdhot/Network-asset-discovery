@@ -1,0 +1,16 @@
+Port,DeviceType
+22,Server
+23,Network Device
+554,CCTV Camera
+8554,CCTV Camera
+631,Printer
+9100,Printer
+515,Printer
+1883,IoT Device
+5683,IoT Device
+8883,IoT Device
+5000,NAS
+5001,NAS
+32400,Media Server
+5900,Remote Desktop
+3389,Windows Device

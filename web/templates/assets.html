@@ -1,0 +1,271 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="card dashboard-card">
+
+<div class="card-body">
+
+<h2>
+
+Asset Inventory
+
+</h2>
+
+<hr>
+
+<form method="GET">
+
+<div class="row mb-4">
+
+<div class="col-md-3">
+
+<select
+
+name="device"
+
+class="form-select"
+
+>
+
+<option value="">All Devices</option>
+
+{% for item in device_types %}
+
+<option
+
+value="{{ item }}"
+
+{% if selected_device==item %}selected{% endif %}
+
+>
+
+{{ item }}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+</div>
+
+<div class="col-md-3">
+
+<select
+
+name="trust"
+
+class="form-select"
+
+>
+
+<option value="">All Trust</option>
+
+<option value="Trusted">Trusted</option>
+
+<option value="Unknown">Unknown</option>
+
+<option value="Untrusted">Untrusted</option>
+
+</select>
+
+</div>
+
+<div class="col-md-3">
+
+<select
+
+name="vendor"
+
+class="form-select"
+
+>
+
+<option value="">All Vendors</option>
+
+{% for item in vendors %}
+
+<option
+
+value="{{ item }}"
+
+{% if selected_vendor==item %}selected{% endif %}
+
+>
+
+{{ item }}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+</div>
+
+<div class="col-md-2">
+
+<select
+
+name="os"
+
+class="form-select"
+
+>
+
+<option value="">All OS</option>
+
+{% for item in operating_systems %}
+
+<option
+
+value="{{ item }}"
+
+{% if selected_os==item %}selected{% endif %}
+
+>
+
+{{ item }}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+</div>
+
+<div class="col-md-1">
+
+<button
+
+class="btn btn-primary w-100"
+
+>
+
+Go
+
+</button>
+
+</div>
+
+</div>
+
+</form>
+
+<table class="table table-hover align-middle">
+
+<thead>
+
+<tr>
+
+<th>IP</th>
+
+<th>Hostname</th>
+
+<th>Vendor</th>
+
+<th>Device</th>
+
+<th>OS</th>
+
+<th>Trust</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for device in devices %}
+
+<tr>
+
+<td>{{ device.ip }}</td>
+
+<td>{{ device.hostname }}</td>
+
+<td>{{ device.vendor }}</td>
+
+<td>{{ device.device_type }}</td>
+
+<td>{{ device.operating_system }}</td>
+
+<td>{{ device.trust_status }}</td>
+
+<td>
+
+<a
+
+href="/device/{{ device.mac }}"
+
+class="btn btn-sm btn-primary"
+
+>
+
+View
+
+</a>
+
+{% if device.trust_status=="Trusted" %}
+
+<a
+
+href="/device/{{ device.mac }}/untrust"
+
+class="btn btn-sm btn-warning"
+
+>
+
+Untrust
+
+</a>
+
+{% else %}
+
+<a
+
+href="/device/{{ device.mac }}/trust"
+
+class="btn btn-sm btn-success"
+
+>
+
+Trust
+
+</a>
+
+{% endif %}
+
+<a
+
+href="/device/{{ device.mac }}/delete"
+
+class="btn btn-sm btn-danger"
+
+onclick="return confirm('Delete Device?')"
+
+>
+
+Delete
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

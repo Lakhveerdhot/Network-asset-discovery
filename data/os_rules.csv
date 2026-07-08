@@ -1,0 +1,21 @@
+Keyword,DeviceType
+Windows,Laptop
+Windows 11,Laptop
+Windows 10,Laptop
+Windows Server,Server
+Ubuntu,Server
+Debian,Server
+CentOS,Server
+Rocky Linux,Server
+AlmaLinux,Server
+Fedora,Server
+Red Hat,Server
+OpenWrt,Router
+DD-WRT,Router
+pfSense,Firewall
+OPNsense,Firewall
+Android,Mobile Phone
+iOS,Mobile Phone
+macOS,Laptop
+ChromeOS,Laptop
+FreeBSD,Server

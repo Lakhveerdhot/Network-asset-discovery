@@ -1,0 +1,44 @@
+Keyword,DeviceType
+LAPTOP,Laptop
+DESKTOP,Desktop
+NOTEBOOK,Laptop
+MACBOOK,Laptop
+REDMI,Mobile Phone
+IPHONE,Mobile Phone
+GALAXY,Mobile Phone
+PIXEL,Mobile Phone
+ONEPLUS,Mobile Phone
+REALME,Mobile Phone
+VIVO,Mobile Phone
+OPPO,Mobile Phone
+NOKIA,Mobile Phone
+MOTO,Mobile Phone
+XPERIA,Mobile Phone
+POCO,Mobile Phone
+HONOR,Mobile Phone
+HUAWEI,Mobile Phone
+JIO,Router
+ROUTER,Router
+TPLINK,Router
+TP-LINK,Router
+DLINK,Router
+D-LINK,Router
+NETGEAR,Router
+ASUS,Router
+MIWIFI,Router
+CANON,Printer
+BROTHER,Printer
+EPSON,Printer
+XEROX,Printer
+HPPRINT,Printer
+LASERJET,Printer
+OFFICEJET,Printer
+HIKVISION,CCTV Camera
+DAHUA,CCTV Camera
+EZVIZ,CCTV Camera
+SYNOLOGY,NAS
+QNAP,NAS
+RASPBERRYPI,IoT Device
+ESP32,IoT Device
+ESP8266,IoT Device
+ARDUINO,IoT Device
